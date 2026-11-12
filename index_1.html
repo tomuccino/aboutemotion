@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Современный лендинг | Будущее уже здесь</title>
+    <!-- Подключение шрифта Google Fonts для современного вида -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (бесплатные иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1A1F2C;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Контейнер с адаптивными отступами */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Стили секций */
+        section {
+            padding: 80px 0;
+        }
+
+        /* Типографика */
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1E2A5E, #2C3E7E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0F172A;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #4B5563;
+            max-width: 700px;
+            margin: 0 auto 48px auto;
+            text-align: center;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #2C3E7E;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(44, 62, 126, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #1E2A5E;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2C3E7E;
+            color: #2C3E7E;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: #2C3E7E;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Hero секция */
+        .hero {
+            padding-top: 100px;
+            padding-bottom: 80px;
+            background: linear-gradient(120deg, #F8FAFE 0%, #EFF3FC 100%);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(44, 62, 126, 0.1);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2C3E7E;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #334155;
+            margin: 24px 0 32px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 25px -5px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Карточки преимуществ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #FFFFFF;
+            border-radius: 32px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(44, 62, 126, 0.08);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(44, 62, 126, 0.2);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #2C3E7E;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
+        /* Секция CTA (Call to Action) */
+        .cta-section {
+            background: linear-gradient(135deg, #1E2A5E 0%, #162045 100%);
+            color: white;
+            text-align: center;
+            border-radius: 48px;
+            margin: 40px auto;
+            padding: 60px 40px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #1E2A5E;
+            box-shadow: none;
+        }
+
+        .cta-btn:hover {
+            background: #F0F4FF;
+            transform: scale(1.02);
+            color: #0F172A;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #0B1120;
+            color: #CBD5E1;
+            padding: 48px 0 24px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            max-width: 260px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: #CBD5E1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .social-icons a {
+            background: #1E293B;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #CBD5E1;
+            transition: all 0.2s;
+        }
+
+        .social-icons a:hover {
+            background: #2C3E7E;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid #1E293B;
+            padding-top: 28px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6B7280;
+        }
+
+        /* Адаптивные медиа-запросы */
+        @media (max-width: 992px) {
+            section {
+                padding: 60px 0;
+            }
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .cta-section {
+                padding: 40px 20px;
+                border-radius: 32px;
+            }
+            .footer-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .feature-card {
+                padding: 28px 20px;
+            }
+            .btn {
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Анимация появления при скролле (лёгкая) */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO Секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content fade-up">
+                    <span class="hero-badge"><i class="fas fa-rocket" style="margin-right: 6px;"></i> Инновации стартуют здесь</span>
+                    <h1>Будущее <br>вашего бизнеса</h1>
+                    <p class="hero-description">Платформа нового поколения для роста, автоматизации и привлечения клиентов. Присоединяйтесь к лидерам рынка уже сегодня.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn"><i class="fas fa-play"></i> Начать бесплатно</a>
+                        <a href="#" class="btn btn-outline"><i class="fas fa-chart-line"></i> Узнать больше</a>
+                    </div>
+                </div>
+                <div class="hero-image fade-up">
+                    <!-- Абстрактная SVG иллюстрация (встроенная, чтобы не грузить внешние ресурсы) -->
+                    <svg width="400" height="340" viewBox="0 0 500 420" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto">
+                        <rect x="40" y="120" width="420" height="200" rx="30" fill="#EFF3FC" stroke="#2C3E7E" stroke-width="2" stroke-dasharray="8 6"/>
+                        <circle cx="160" cy="220" r="40" fill="#2C3E7E" fill-opacity="0.8" />
+                        <circle cx="280" cy="180" r="30" fill="#F59E0B" fill-opacity="0.7" />
+                        <rect x="340" y="200" width="70" height="70" rx="16" fill="#10B981" fill-opacity="0.7" />
+                        <path d="M80 300 L420 300" stroke="#94A3B8" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M220 50 L280 50 L300 90 L200 90 Z" fill="#2C3E7E" fill-opacity="0.9" />
+                        <circle cx="250" cy="60" r="12" fill="white" />
+                        <text x="180" y="370" font-family="Inter" font-size="14" fill="#2C3E7E" font-weight="600">AI • Cloud • Smart</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция преимуществ -->
+    <section>
+        <div class="container">
+            <div style="text-align: center;" class="fade-up">
+                <h2>Почему выбирают нас</h2>
+                <p class="section-subtitle">Мощные инструменты для масштабирования и полного контроля</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Мгновенная скорость</h3>
+                    <p>Оптимизированная архитектура и CDN по всему миру обеспечивают загрузку за доли секунды.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Безопасность данных</h3>
+                    <p>Шифрование 256 бит, соответствие стандартам GDPR и регулярные аудиты.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3>Аналитика в реальном времени</h3>
+                    <p>Интерактивные дашборды и прогнозы на основе AI для принятия решений.</p>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 Поддержка</h3>
+                    <p>Профессиональная команда экспертов ответит на любые вопросы в любое время.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок с дополнительной информацией / о нас -->
+    <section style="background: #F9FAFE;">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+                <div class="fade-up" style="flex: 1;">
+                    <span style="background: #E0E7FF; padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; font-weight: 600; color:#2C3E7E;"> <i class="fas fa-chart-line"></i> Рост +167%</span>
+                    <h2 style="margin-top: 20px;">Интеграция с любыми сервисами</h2>
+                    <p style="color: #334155; margin: 20px 0; font-size: 1.05rem;">Более 200 готовых коннекторов к CRM, мессенджерам, платежным системам и маркетплейсам. Настраивайте процессы в несколько кликов без участия разработчиков.</p>
+                    <ul style="list-style: none; margin-bottom: 30px;">
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color:#2C3E7E; margin-right: 10px;"></i> API первого класса с документацией</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color:#2C3E7E; margin-right: 10px;"></i> Webhooks и автоматизация триггеров</li>
+                        <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color:#2C3E7E; margin-right: 10px;"></i> Собственные маркетплейс приложений</li>
+                    </ul>
+                    <a href="#" class="btn" style="background: #1E2A5E;">Изучить интеграции <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="fade-up" style="flex: 1; text-align: center;">
+                    <div style="background: white; border-radius: 40px; padding: 20px; box-shadow: 0 20px 30px -15px rgba(0,0,0,0.05);">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 4rem; color:#2C3E7E;"></i>
+                        <div style="margin: 20px 0; background: #EFF3FC; border-radius: 60px; padding: 12px;">
+                            <span style="font-weight: 700;">API активность: </span> 99.99% uptime
+                        </div>
+                        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+                            <div><i class="fab fa-slack"></i> Slack</div>
+                            <div><i class="fab fa-telegram"></i> Telegram</div>
+                            <div><i class="fab fa-whatsapp"></i> WhatsApp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Секция с призывом -->
+    <div class="container">
+        <div class="cta-section fade-up">
+            <h2>Готовы начать трансформацию?</h2>
+            <p>Присоединяйтесь к более чем 5000+ компаний, которые уже используют нашу платформу для роста.</p>
+            <a href="#" class="btn cta-btn"><i class="fas fa-calendar-alt"></i> Заказать демо</a>
+            <div style="margin-top: 30px; font-size: 0.85rem; opacity: 0.7;">Без обязательств, 14 дней бесплатного пробного периода</div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-brain" style="margin-right: 6px;"></i> FutureSoft</h3>
+                    <p>Инновационные цифровые решения для бизнеса нового времени.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Продукт</h4>
+                        <ul>
+                            <li><a href="#">Возможности</a></li>
+                            <li><a href="#">Цены</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">Безопасность</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Компания</h4>
+                        <ul>
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Блог</a></li>
+                            <li><a href="#">Карьера</a></li>
+                            <li><a href="#">Контакты</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Поддержка</h4>
+                        <ul>
+                            <li><a href="#">Центр помощи</a></li>
+                            <li><a href="#">Сообщество</a></li>
+                            <li><a href="#">Статус</a></li>
+                            <li><a href="#">Документация</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 FutureSoft. Все права защищены. Сделано с <i class="fas fa-heart" style="color:#EF4444;"></i> для инноваций.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Простой скрипт для анимации появления элементов при скролле -->
+    <script>
+        // Функция для проверки видимости элемента
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            // Элемент появляется, когда его верхняя граница находится ниже на 100px от нижней границы окна,
+            // а нижняя граница выше на 100px от верхней границы окна (плюс запас)
+            return (rect.top <= windowHeight - 100 && rect.bottom >= 100);
+        }
+
+        function handleScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => {
+                if (isElementInViewport(el) && !el.classList.contains('appear')) {
+                    el.classList.add('appear');
+                }
+            });
+        }
+
+        // Инициализация: добавим классы всем fade-up элементам, проверим видимые при загрузке
+        window.addEventListener('DOMContentLoaded', () => {
+            // Добавляем базовые стили для fade-up, если они не были применены (заданы в CSS)
+            const faders = document.querySelectorAll('.fade-up');
+            faders.forEach(el => {
+                // Если элемент уже виден сразу при загрузке, то показываем
+                if (isElementInViewport(el)) {
+                    el.classList.add('appear');
+                }
+            });
+            handleScrollAnimation();
+            window.addEventListener('scroll', handleScrollAnimation);
+            // Дополнительный вызов на ресайзе для корректировки
+            window.addEventListener('resize', handleScrollAnimation);
+        });
+    </script>
+    <!-- Дополнительная адаптация: чтобы изображение SVG не вылезало за границы -->
+</body>
+</html>
